@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
 
     $run_register_query = mysqli_query($con, $query);
     echo "<script>alert('SucessFully ADDED...');</script>";
-	echo "<script>window.open('home.php','_self')</script>";
+	echo "<script>window.open('viewCustomers.php','_self')</script>";
 }
 
 ?>
