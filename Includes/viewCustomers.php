@@ -30,8 +30,8 @@
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Total Expenditures</th>
-                <th scope="col">€.orders</th>
+                <th scope="col">Total Expenditures(₹)</th>
+                <th scope="col">Orders</th>
             </tr>
         </thead>
         <tbody>
