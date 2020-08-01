@@ -45,9 +45,9 @@ if(isset($_POST['submit'])){
     $customer_email = $_POST['cust_email'];
     $customer_phone = $_POST['cust_phone'];
     $customer_gender = $_POST['cust_gender'];
-
-    $query = "insert into customer (customer_name,customer_email,customer_phone,customer_gender) 
-		values ('$customer_name','$customer_email','$customer_phone','$customer_gender')";
+    $total_expenditure = 0;
+    $query = "insert into customer (customer_name,customer_email,customer_phone,customer_gender,total_expenditure) 
+		values ('$customer_name','$customer_email','$customer_phone','$customer_gender','$total_expenditure')";
 
     $run_register_query = mysqli_query($con, $query);
     echo "<script>alert('SucessFully ADDED...');</script>";
