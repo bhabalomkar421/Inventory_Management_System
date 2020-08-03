@@ -16,7 +16,7 @@
         </div>
         </span>
     </div>
-    <?php 
+    <?php
         if(isset($_POST['submit_number'])){ 
             $number = $_POST['columns'];
             for ($i=0; $i < $number; $i++) { 
@@ -67,7 +67,7 @@
     
 </div>
 
-<?php 
+<?php
     global $con;
     if(isset($_POST['submit'])){
         $customer_id = $_POST['cust_id'];
@@ -91,10 +91,34 @@
             $descrease_quantity = $product_quantity - $quantity;
             $query_descrease_quan = "UPDATE products SET product_quantity = '$descrease_quantity' WHERE product_id = '$product_id'";
             if(mysqli_query($con, $query_descrease_quan)){
-                echo "<script>window.open('home.php','_self')</script>";
+                echo ".";
             } else {
             echo "Error updating record: " . mysqli_error($con);
             }
+
+            //increase customer expenditure
+
+            //find current expenditure
+            // $find_current_expenditure = "select total_expenditure from customer where id = $customer_id";
+            // $run_customer_query = mysqli_query($con, $find_current_expenditure);
+            // while ($cust = mysqli_fetch_array($run_customer_query)) {
+            //     $current_expenditure = $cust['total_expenditure'];
+            // }
+            // $expenditure = $current_expenditure + $total_amount;
+
+            $sum_query = "SELECT sum(total_amount) as sum_total_amount FROM orders where customer_id = $customer_id";
+            $run_sum_query = mysqli_query($con, $sum_query);
+            while($rows = mysqli_fetch_array($run_sum_query)){
+                $sum_final = $rows['sum_total_amount'];
+            }
+
+            $query_increase_expen = "UPDATE customer SET total_expenditure = '$sum_final' WHERE id = '$customer_id'";
+            if(mysqli_query($con, $query_increase_expen)){
+                echo "<script>window.open('viewOrders.php','_self')</script>";
+            } else {
+            echo "Error updating record: " . mysqli_error($con);
+            }
+
         }else{
             echo "Quantity should be greater than 0";
         }

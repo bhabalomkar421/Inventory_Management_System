@@ -34,7 +34,7 @@
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Quantity</th>
                 <th scope="col">Quantity Lower Limit</th>
-                <th scope="col">Product Price</th>
+                <th scope="col">Product Price(₹)</th>
                 <th scope="col">orders</th>
             </tr>
         </thead>
@@ -58,7 +58,7 @@
                             <td>$product_quantity</td>
                             <td>$quantity_lower_limit </td>
                             <td>$product_price</td>
-                            <td> <a href='./viewCustomerOrders.php?id=$product_id'><button class='btn btn-primary'>View</button></a></td>
+                            <td> <a href='./ProductsOrders.php?id=$product_id'><button class='btn btn-primary'>View</button></a></td>
                     </tr>";
                 }
             }else{
@@ -77,7 +77,7 @@
                             <td>$product_quantity</td>
                             <td>$quantity_lower_limit </td>
                             <td>$product_price</td>
-                            <td> <a href='./viewCustomerOrders.php?id=$product_id'><button class='btn btn-primary'>View</button></a></td>
+                            <td> <a href='./ProductsOrders.php?id=$product_id'><button class='btn btn-primary'>View</button></a></td>
                     </tr>";
                 }
             }

@@ -3,7 +3,7 @@
     ?>
 
 <div class="container">
-    <h4>cutomers</h4>
+    <h4>customers</h4>
     <a href="customerRegistration.php">Add Customers</a>
     <br>
     <a href="viewCustomers.php">Show Customers</a>
@@ -18,5 +18,6 @@
 
     <h4>orders</h4>
     <a href="newOrders.php">Add Orders</a>
-    
+    <br>
+    <a href="viewOrders.php">View Orders</a>
 <div>
