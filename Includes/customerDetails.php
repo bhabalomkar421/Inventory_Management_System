@@ -34,10 +34,13 @@ while ($customer = mysqli_fetch_array($run_query_for_customer)) {
         </div> 
     </div>  
 
-    <div class="row" style="margin-top:25px;">
-        <h3><?php echo "$customer_name Orders" ?></h3>
-        <span style="float:left;">
-        </span>
+    <div class="row" style="margin-top:25px;margin-bottom:25px">
+        <div class="col col-lg-6">
+            <h3><?php echo "$customer_name Orders" ?></h3>
+        </div>
+        <div class="col col-lg-6">
+            <a href="customerAddOrder.php?id=<?php echo"$customer_id" ?>" class="btn btn-primary btn-lg " style="float:right">Add order</a>
+        </div>
     </div>
     <table class="table table-bordered">
         <thead class="thead-dark">
