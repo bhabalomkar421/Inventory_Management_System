@@ -79,7 +79,7 @@
             $product_price = $product['product_price'];
         }
         if($quantity > 0 && $product_quantity > 0){
-            
+            mysqli_autocommit($con, FALSE);
             $total_amount = $product_price * $quantity;
             // insert to orders(customer_id, product_id, quantity, total_amount, dateTime)  
             $query = "insert into orders(customer_id, product_id, quantity, total_amount, date_time) values ('$customer_id', '$product_id', '$quantity','$total_amount',NOW())";
@@ -102,6 +102,7 @@
 
             $query_increase_expen = "UPDATE customer SET total_expenditure = '$sum_final' WHERE id = '$customer_id'";
             if(mysqli_query($con, $query_increase_expen)){
+                mysqli_commit($con);
                 echo "<script>window.open('viewOrders.php','_self')</script>";
             } else {
             echo "Error updating record: " . mysqli_error($con);

@@ -3,7 +3,7 @@ include ('db.php');
 
 if (isset($_GET['id'])) {
     $order_id = $_GET['id'];
-
+    mysqli_autocommit($con, FALSE);
     $select_order = "select * from orders where order_id = $order_id";
     $run_select_query = mysqli_query($con, $select_order);
     while($rows0 = mysqli_fetch_array($run_select_query)){
@@ -37,10 +37,11 @@ if (isset($_GET['id'])) {
 
     $query_increase_expen = "UPDATE customer SET total_expenditure = '$sum_final' WHERE id = '$customer_id'";
     if(mysqli_query($con, $query_increase_expen)){
+        mysqli_commit($con);
         echo "<script>window.open('viewOrders.php','_self')</script>";
     } else {
         echo "Error updating record: " . mysqli_error($con);
     }
-
+    
 }
 ?>
