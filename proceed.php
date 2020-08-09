@@ -3,7 +3,6 @@ include('db.php');
 if(isset($_GET['id'])){
     $customer_id = $_GET['id'];
 
-    $customerOrder = 'customer_id : '.$customer_id.', product_quantity : {';
     //fetch all rows of that specific customer_id in cart table
     $query = "select * from cart where customer_id = $customer_id";
     $res = mysqli_query($con, $query);
@@ -59,7 +58,7 @@ if(isset($_GET['id'])){
 
                 $query_increase_expen = "UPDATE customer SET total_expenditure = '$sum_final' WHERE id = '$customer_id'";
                 if(mysqli_query($con, $query_increase_expen)){
-                    // echo "<script>window.open('viewOrders.php','_self')</script>";
+                    echo "<script>window.open('viewOrders.php','_self')</script>";
                     echo "success";
                 } else {
                 echo "Error updating record: " . mysqli_error($con);

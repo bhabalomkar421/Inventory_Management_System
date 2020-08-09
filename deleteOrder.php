@@ -3,8 +3,10 @@ include ('db.php');
 
 if (isset($_GET['id'])) {
     $order_id = $_GET['id'];
+    $product_id = $_GET['product_id'];
+
     mysqli_autocommit($con, FALSE);
-    $select_order = "select * from orders where order_id = $order_id";
+    $select_order = "select * from orders where order_id = $order_id and product_id = $product_id";
     $run_select_query = mysqli_query($con, $select_order);
     while($rows0 = mysqli_fetch_array($run_select_query)){
         $customer_id = $rows0['customer_id'];

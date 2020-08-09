@@ -1,14 +1,25 @@
 <?php
     include('nav.php');
+    include('db.php');
+    // $delete_query = "delete from cart";
+    // if(mysqli_query($con, $delete_query)){
+    //     echo "";
+    // }else{
+    //     echo "";
+    // }
 ?>
 
 <div class="container my-4">
 <div id="error-message" class="alert alert-warning" style="display:none;"></div>
 <div id="success-message" class="alert alert-success" style="display:none;"></div>
 <form id="addForm">
-    <input type="text" class="form-control" name="customer_id" id = "customer_id" placeholder="customer_id" required>
-    <input type="text" class="form-control" name="product_id" id = "product_id" placeholder="product_id" required>
-    <input type="text" class="form-control" name="quantity" id = "quantity" placeholder="quantity" required>
+    <label for='customer_id'>customer Id</label>
+    <input type="fixed" class="form-control" name="customer_id" id = "customer_id" required>
+    <label for='product_id'>Product Id</label>
+    <input type="text" class="form-control" name="product_id" id = "product_id" required>
+    <label for='quantity'>quantity </label>
+    <input type="text" class="form-control" name="quantity" id = "quantity" required>
+    <br>
     <input type="submit" id="save-button" name="submit" value="save" class="btn btn-primary">
 </form>
 </div>

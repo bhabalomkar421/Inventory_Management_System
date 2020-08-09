@@ -11,13 +11,23 @@
             <tr>
                 <th>Customer ID</td>
                 <th>Product ID</td>
+                <th>Product Name</td>
                 <th>Product quantity</td>
                 <th>Delete</td>
             </tr>
         ';
         while($row = mysqli_fetch_assoc($res)){
             $customer_id = $row['customer_id'];
-            $op .= "<tr><td>{$row['customer_id']}</td><td>{$row['product_id']}</td><td>{$row['quantity']}</td><td><a href='./deleteFromCart.php?id={$row['id']}'>Delete</a></td></tr>";
+            $product_id = $row['product_id'];
+            $queryProd = "select * from products where product_id = $product_id";
+            $res1 = mysqli_query($con, $queryProd);
+            if(mysqli_num_rows($res1) > 0){
+                while($row1 = mysqli_fetch_assoc($res1)){
+                    $product_name = $row1['product_name'];
+                }
+            }
+
+            $op .= "<tr><td>{$row['customer_id']}</td><td>{$row['product_id']}</td><td>{$product_name}</td><td>{$row['quantity']}</td><td><a href='./deleteFromCart.php?id={$row['id']}&customer_id={$row['customer_id']}'>Delete</a></td></tr>";
         }
         $op .= "</table>
                 <div>

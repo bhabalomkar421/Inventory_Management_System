@@ -8,7 +8,7 @@
             <h1>Our Orders</h1>
         </div>
         <div class ="col col-lg-6" style="float:right">
-            <a href="newOrders.php">
+            <a href="addOrders.php">
                 <button class="btn btn-primary btn-lg">Add new order</button>
             </a>
         </div>
@@ -79,7 +79,7 @@
                             <td>$quantity</td>
                             <td>$amount </td>
                             <td>$date</td>
-                            <td> <a href='./editOrders.php?id=$order_id'><img src='./edit.png'></a></td>
+                            <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
                         </tr>";
                 }
             }else{
@@ -119,7 +119,7 @@
                             <td>$quantity</td>
                             <td>$amount </td>
                             <td>$date</td>
-                            <td> <a href='./editOrders.php?id=$order_id'><img src='./edit.png'></a></td>
+                            <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
                         </tr>";
                 }
             }
