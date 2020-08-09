@@ -19,14 +19,15 @@
     <?php
         if(isset($_POST['submit_number'])){ 
             $number = $_POST['columns'];
+            echo "
+                <div class='form-group col col-lg-3 col col-md-3 col-sm-12  col-xs-12'>
+                    <label for='exampleInputName1'>Customer Id</label>
+                    <input type='text' class='form-control' name='cust_id' id='exampleInputName1' aria-describedby='name' required>
+                </div>";
             for ($i=0; $i < $number; $i++) { 
                 echo "
                 <form action='newOrders.php' method=POST>
                     <div class = 'row' style='margin-top:25px'>
-                        <div class='form-group col col-lg-3 col col-md-3 col-sm-12  col-xs-12'>
-                            <label for='exampleInputName1'>Customer Id</label>
-                            <input type='text' class='form-control' name='cust_id$i' id='exampleInputName1' aria-describedby='name' required>
-                        </div>
                         <div class='form-group col col-lg-3 col-md-3 col-sm-12 col-xs-12'>
                             <label for='exampleInputEmail1'>Product Id</label>
                             <input type='text' class='form-control' name='prod_id$i' id='exampleInput1' aria-describedby='emailHelp' required>
