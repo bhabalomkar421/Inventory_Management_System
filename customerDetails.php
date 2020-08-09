@@ -9,12 +9,12 @@ while ($customer = mysqli_fetch_array($run_query_for_customer)) {
     $customer_phone = $customer['customer_phone'];
     $customer_gender = $customer['customer_gender'];
     $total_expenditure = $customer['total_expenditure'];
-
-    }
+}
 ?>
 <div class="container" style="margin-top:25px;">
     <div class="row">
         <h1>Customers Details</h1>
+        <a href="./editCustomerDetails.php?id=<?php echo $customer_id; ?>" class="btn btn-primary">Update</a>
     </div>
     <div style="margin-left:50px;">
         <div class="row">
