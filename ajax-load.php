@@ -16,11 +16,12 @@
             </tr>
         ';
         while($row = mysqli_fetch_assoc($res)){
+            $customer_id = $row['customer_id'];
             $op .= "<tr><td>{$row['customer_id']}</td><td>{$row['product_id']}</td><td>{$row['quantity']}</td><td><a href='./deleteFromCart.php?id={$row['id']}'>Delete</a></td></tr>";
         }
         $op .= "</table>
-                <div style='float:right;'>
-                    <a href='./proceed.php?id={$row['customer_id']}' class='btn btn-primary'>Proceed</a>
+                <div>
+                    <a href='./proceed.php?id=$customer_id' class='btn btn-primary' style='float:right;'>Proceed</a>
                 </div>
             ";
 

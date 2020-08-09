@@ -28,30 +28,33 @@
         <?php 
             $order_query = "select * from orders where product_id = $product_id";
             $run_order_query = mysqli_query($con, $order_query);
+            if(mysqli_num_rows($run_order_query) > 0){
+                while ($orders = mysqli_fetch_array($run_order_query)) {
+                    $customer_id = $orders['customer_id'];
+                    $date = $orders['date_time'];
 
-            while ($orders = mysqli_fetch_array($run_order_query)) {
-                $customer_id = $orders['customer_id'];
-                $date = $orders['date_time'];
+                    $customer_query = "select * from customer where id = $customer_id";
+                    $run_cust_query = mysqli_query($con, $customer_query);
 
-                $customer_query = "select * from customer where id = $customer_id";
-                $run_cust_query = mysqli_query($con, $customer_query);
-
-                while ($customers = mysqli_fetch_array($run_cust_query)) {
-                    $customer_name = $customers['customer_name'];
-                    $customer_email = $customers['customer_email'];
-                    $customer_phone = $customers['customer_phone'];
-                    $customer_gender = $customers['customer_gender'];
+                    while ($customers = mysqli_fetch_array($run_cust_query)) {
+                        $customer_name = $customers['customer_name'];
+                        $customer_email = $customers['customer_email'];
+                        $customer_phone = $customers['customer_phone'];
+                        $customer_gender = $customers['customer_gender'];
+                    }
+                    
+                    echo "
+                        <tr>
+                            <th scope='row'>$customer_id </th>
+                            <td>$customer_name</td>
+                            <td>$customer_email</td>
+                            <td>$customer_phone </td>
+                            <td>$customer_gender</td>
+                            <td>$date</td>
+                        </tr>";
                 }
-                
-                echo "
-                    <tr>
-                        <th scope='row'>$customer_id </th>
-                        <td>$customer_name</td>
-                        <td>$customer_email</td>
-                        <td>$customer_phone </td>
-                        <td>$customer_gender</td>
-                        <td>$date</td>
-                    </tr>";
+            }else{
+                echo "<tr ><td colspan='6'><h3>No record found</h3><td><tr>";
             }
         ?>     
         </tbody>

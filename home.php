@@ -17,7 +17,7 @@
 
 
     <h4>orders</h4>
-    <a href="newOrders.php">Add Orders</a>
+    <a href="addOrders.php">Add Orders</a>
     <br>
     <a href="viewOrders.php">View Orders</a>
 <div>

@@ -76,7 +76,7 @@
             }
             else if(isset($_POST['submit']) && isset($_POST['sort_by_expenditure'])){
                 $sort = $_POST['sort_by_expenditure'];
-                $product_query = "select * from customer order by $sort";
+                $product_query = "select * from customer order by $sort DESC";
                 $run_query = mysqli_query($con, $product_query);
                 
                 while ($rows = mysqli_fetch_array($run_query)) {
