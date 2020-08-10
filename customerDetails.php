@@ -14,24 +14,28 @@ while ($customer = mysqli_fetch_array($run_query_for_customer)) {
 <div class="container" style="margin-top:25px;">
     <div class="row">
         <h1>Customers Details</h1>
-        <a href="./editCustomerDetails.php?id=<?php echo $customer_id; ?>" class="btn btn-primary">Update</a>
+            <a href="./editCustomerDetails.php?id=<?php echo $customer_id; ?>" class="btn btn-primary">Update</a>
     </div>
-    <div style="margin-left:50px;">
-        <div class="row">
-            <h3>Customer Name : <?php echo "  $customer_name " ?></h3>
+    <br>
+    <div class="card" style="width: 58rem;">
+        
+        <div class="card-body">
+            <div class="row">
+                <h3 class="card-title">Customer Name : <?php echo "  $customer_name " ?></h3>
+            </div>
+            <div class="row">
+                <h3 class="card-title">Customer Email  : <?php echo "  $customer_email " ?></h3>
+            </div>  
+            <div class="row">
+                <h3 class="card-title">Customer Phone  : <?php echo "  $customer_phone " ?></h3>
+            </div>  
+            <div class="row">
+                <h3 class="card-title">Customer Gender  : <?php echo "  $customer_gender " ?></h3>
+            </div>  
+            <div class="row">
+                <h3 class="card-title">Customers Total Expenditure  : <?php echo " ₹ $total_expenditure " ?></h3>
+            </div> 
         </div>
-        <div class="row">
-            <h3>Customer Email  : <?php echo "  $customer_email " ?></h3>
-        </div>  
-        <div class="row">
-            <h3>Customer Phone  : <?php echo "  $customer_phone " ?></h3>
-        </div>  
-        <div class="row">
-            <h3>Customer Gender  : <?php echo "  $customer_gender " ?></h3>
-        </div>  
-        <div class="row">
-            <h3>Customers Total Expenditure  : <?php echo " ₹ $total_expenditure " ?></h3>
-        </div> 
     </div>  
 
     <div class="row" style="margin-top:25px;margin-bottom:25px">
