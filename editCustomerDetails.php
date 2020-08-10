@@ -12,39 +12,39 @@ if(isset($_GET['id'])){
         $total_expenditure = $customer['total_expenditure'];
     }
 
-echo "
-    <div class='container'>
-        <form action='editOrders.php' method=POST>
-            <div class ='row' style='margin-top:25px'>
-                <label for='customer_id'>customer Id</label>
-                <input type='text' class='form-control' name='customer_id' id='customer_id' aria-describedby='name' value='$customer_name' readonly required>
-            </div>
-            <div class ='row' style='margin-top:25px'>
-                <label for='customer_name'>customer Name</label>
-                <input type='text' class='form-control' name='customer_name' id='customer_name' aria-describedby='name' value='$customer_name'  required>
-            </div>
-            <div class = 'row' style='margin-top:25px'>
-                <label for='customer_email'>customer_email</label>
-                <input type='email' class='form-control' name='customer_email' id='customer_email' aria-describedby='emailHelp'value='$customer_email' required>
-            </div>
-            <div class = 'row' style='margin-top:25px'>
-                <label for='customer_email'>customer_email</label>
-                <input type='email' class='form-control' name='customer_email' id='customer_email' aria-describedby='emailHelp'value='$customer_email' required>
-            </div>
-            <div class = 'row' style='margin-top:25px'>
-                <label for='exampleInputPhone1'>Quantity</label>
-                <input type='number' class='form-control' name='quantity' id='exampleInputPhone1' aria-describedby='quantity' value='$quantity' required>
-            </div>
-            <div class = 'row' style='margin-top:25px'>
-                <button class='btn btn-primary btn-lg' type='submit' name='update'>Update  </button>
-            </div>
-        </form>     
-    </div>
-    <div style='margin-left:115px;margin-top:50px'>
-        <a href='./deleteOrder.php?id=$order_id&product_id=$product_id' ><button class='btn btn-primary btn-lg' >Delete  </button></a>
-    </div>
-    ";
-}
+    echo "
+        <div class='container'>
+            <form action='editOrders.php' method=POST>
+                <div class ='row' style='margin-top:25px'>
+                    <label for='customer_id'>customer Id</label>
+                    <input type='text' class='form-control' name='customer_id' id='customer_id' aria-describedby='name' value='$customer_name' readonly required>
+                </div>
+                <div class ='row' style='margin-top:25px'>
+                    <label for='customer_name'>customer Name</label>
+                    <input type='text' class='form-control' name='customer_name' id='customer_name' aria-describedby='name' value='$customer_name'  required>
+                </div>
+                <div class = 'row' style='margin-top:25px'>
+                    <label for='customer_email'>customer_email</label>
+                    <input type='email' class='form-control' name='customer_email' id='customer_email' aria-describedby='emailHelp'value='$customer_email' required>
+                </div>
+                <div class = 'row' style='margin-top:25px'>
+                    <label for='customer_email'>customer_email</label>
+                    <input type='email' class='form-control' name='customer_email' id='customer_email' aria-describedby='emailHelp'value='$customer_email' required>
+                </div>
+                <div class = 'row' style='margin-top:25px'>
+                    <label for='exampleInputPhone1'>Quantity</label>
+                    <input type='number' class='form-control' name='quantity' id='exampleInputPhone1' aria-describedby='quantity' value='$quantity' required>
+                </div>
+                <div class = 'row' style='margin-top:25px'>
+                    <button class='btn btn-primary btn-lg' type='submit' name='update'>Update  </button>
+                </div>
+            </form>     
+        </div>
+        <div style='margin-left:115px;margin-top:50px'>
+            <a href='./deleteOrder.php?id=$order_id&product_id=$product_id' ><button class='btn btn-primary btn-lg' >Delete  </button></a>
+        </div>
+        ";
+    }
 global $con;
 if(isset($_POST['update'])){
     $order_id =  $_POST['order_id'];
