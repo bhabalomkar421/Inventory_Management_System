@@ -14,7 +14,7 @@
     <div class="row" style="margin-top:25px">
         <div class="col col-lg-6">
             <div class="form-group input-group mb-3">
-                <form action = 'viewcustomers.php' method = POST>
+                <form action = 'viewCustomers.php' method = POST>
                     <input type="text" class="form-control" name="search_customer" placeholder="Customer name....." required>
                     <div class="input-group-append">
                         <span class="input-group-text"><button type="submit" name="search" class="btn btn-primary btn-sm">Search</button></span>
@@ -24,7 +24,7 @@
         </div>
         <div class="col col-lg-6">
             <div class="form-group input-group mb-3">
-                <form action = 'viewcustomers.php' method = POST>
+                <form action = 'viewCustomers.php' method = POST>
                     <label for="sortBy">sortBy</label>
                     <select class="select" id="inputState" name="sort_by_expenditure">
                         <option value="total_expenditure">Expenditure</option>

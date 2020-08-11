@@ -56,6 +56,7 @@ $(document).ready(function(){
                 data : {customer_id:cust_id,product_id:prod_id,quantity:quan},
                 success : function(data){
                     if(data){
+                        console.log(data);
                         loadTable();
                         $("#addForm").trigger("reset");
                         $("#success-message").html("data inserted succesfully").slideDown();
