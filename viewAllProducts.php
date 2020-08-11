@@ -36,6 +36,7 @@
                 <th scope="col">Quantity Lower Limit</th>
                 <th scope="col">Product Price(₹)</th>
                 <th scope="col">orders</th>
+                <th scope="col">Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -78,6 +79,7 @@
                             <td>$quantity_lower_limit </td>
                             <td>$product_price</td>
                             <td> <a href='./ProductsOrders.php?id=$product_id'><button class='btn btn-primary'>View</button></a></td>
+                            <td> <a href='./editProductDetails.php?product_id=$product_id'><img src='./edit.png'></a></td>
                     </tr>";
                 }
             }

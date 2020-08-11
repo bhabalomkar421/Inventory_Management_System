@@ -11,7 +11,7 @@ include('nav.php');
 <br>
 <div class="container">
     <div class="row"  style="margin-top:1rem">
-        <div class="col col-lg-4 col-md-4  col-xs-12 col-sm-4">
+        <div class="col col-lg-4 col-md-12 col-sm-12 col-xs-12">
            <div class="card" style="width: 20rem;">
                 <img src="customers.jpg" class="card-img-top" alt="..." height=300 width=200>
                 <div class="card-body">
@@ -21,7 +21,7 @@ include('nav.php');
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4 col-md-4 col-xs-12 col-sm-4">
+        <div class="col col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <div class="card" style="width: 20rem;">
                 <img src="products.jpg" class="card-img-top" alt="..." height=300 width=200>
                 <div class="card-body">
@@ -32,7 +32,7 @@ include('nav.php');
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4 col-md-4 col-xs-12 col-sm-4">
+        <div class="col col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <div class="card" style="width: 20rem;">
                 <img src="orders.jpg" class="card-img-top" alt="..." height=300 width=200>
                 <div class="card-body">
