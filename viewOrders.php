@@ -18,71 +18,173 @@
             <form action = 'viewOrders.php' method = POST>
                 <label for="sortBy">sortBy</label>
                 <select class="select" id="inputState" class="form-control" name="sort_by_submit">
-                    <option value="total_amount">Total Price</option>
                     <option value="date_time">Date</option>
+                    <option value="total_amount">Total Price</option>
                 </select>
                 <button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
             </form>
          </div>
     </div>
     
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Order Id</th>
-                <th scope="col">Customer Id</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Product Id</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total Price(₹)</th>
-                <th scope="col">Date</th>
-                <th scope="col">Edit</th>
-            </tr>
-        </thead>
-        <tbody>
         <?php
             if(isset($_POST['submit']) && isset($_POST['sort_by_submit'])){
                 $sort = $_POST['sort_by_submit'];
-                $order_query = "select * from orders order by $sort";
-                $run_order_query = mysqli_query($con, $order_query);
+                if($sort == "date_time"){
+                    $order_query = "select * from orders order by $sort";
+                    $run_order_query = mysqli_query($con, $order_query);
 
-                while ($order = mysqli_fetch_array($run_order_query)) {
-                    $order_id = $order['order_id'];
-                    $product_id = $order['product_id'];
-                    $customer_id = $order['customer_id'];
-                    $quantity = $order['quantity'];
-                    $amount = $order['total_amount'];
-                    $date = $order['date_time'];
-                    //for product name
-                    $product_query_1 = "select * from products where product_id = $product_id";
-                    $run_prod1_query = mysqli_query($con, $product_query_1);
+                    while ($order = mysqli_fetch_array($run_order_query)) {
+                        $order_id = $order['order_id'];
+                        $product_id = $order['product_id'];
+                        $customer_id = $order['customer_id'];
+                        $quantity = $order['quantity'];
+                        $amount = $order['total_amount'];
+                        $date = $order['date_time'];
+                        //for product name
+                        $product_query_1 = "select * from products where product_id = $product_id";
+                        $run_prod1_query = mysqli_query($con, $product_query_1);
 
-                    while ($prod = mysqli_fetch_array($run_prod1_query)) {
-                        $product_name = $prod['product_name'];
+                        while ($prod = mysqli_fetch_array($run_prod1_query)) {
+                            $product_name = $prod['product_name'];
+                        }
+
+                        //for customer name
+                        $customer_query_1 = "select * from customer where id = $customer_id";
+                        $run_cust_query = mysqli_query($con, $customer_query_1);
+
+                        while ($cust = mysqli_fetch_array($run_cust_query)) {
+                            $customer_name = $cust['customer_name'];
+                        }
+
+                        if($order_id == 1 || $order_id != $temp){
+                            echo "
+                            <table class='table table-bordered'>
+                                <thead class='thead-dark'>
+                                    <tr>
+                                        <th scope='col'>Order Id</th>
+                                        <th scope='col'>Customer Id</th>
+                                        <th scope='col'>Customer Name</th>
+                                        <th scope='col'>Product Id</th>
+                                        <th scope='col'>Product Name</th>
+                                        <th scope='col'>Quantity</th>
+                                        <th scope='col'>Total Price(₹)</th>
+                                        <th scope='col'>Date</th>
+                                        <th scope='col'>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope='row'>$order_id </th>
+                                        <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
+                                        <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
+                                        <td>$product_id</td>
+                                        <td>$product_name</td>
+                                        <td>$quantity</td>
+                                        <td>$amount </td>
+                                        <td>$date</td>
+                                        <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
+                                    </tr>
+                                ";
+                        }else{
+                            echo "<tr>
+                                <th scope='row'>$order_id </th>
+                                <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
+                                <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
+                                <td>$product_id</td>
+                                <td>$product_name</td>
+                                <td>$quantity</td>
+                                <td>$amount </td>
+                                <td>$date</td>
+                                <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
+                            </tr>
+                            </tbody>
+                        </table>";
+                        }
+                        
+                        $temp = $order_id;
+                        
                     }
+                }else{
+                    $order_query = "select * from orders order by $sort DESC";
+                    $run_order_query = mysqli_query($con, $order_query);
+                    echo "<table class='table table-bordered'>
+                    <thead class='thead-dark'>
+                        <tr>
+                            <th scope='col'>Order Id</th>
+                            <th scope='col'>Customer Id</th>
+                            <th scope='col'>Customer Name</th>
+                            <th scope='col'>Product Id</th>
+                            <th scope='col'>Product Name</th>
+                            <th scope='col'>Quantity</th>
+                            <th scope='col'>Total Price(₹)</th>
+                            <th scope='col'>Date</th>
+                            <th scope='col'>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+                    while ($order = mysqli_fetch_array($run_order_query)) {
+                        $order_id = $order['order_id'];
+                        $product_id = $order['product_id'];
+                        $customer_id = $order['customer_id'];
+                        $quantity = $order['quantity'];
+                        $amount = $order['total_amount'];
+                        $date = $order['date_time'];
+                        //for product name
+                        $product_query_1 = "select * from products where product_id = $product_id";
+                        $run_prod1_query = mysqli_query($con, $product_query_1);
 
-                    //for customer name
-                    $customer_query_1 = "select * from customer where id = $customer_id";
-                    $run_cust_query = mysqli_query($con, $customer_query_1);
+                        while ($prod = mysqli_fetch_array($run_prod1_query)) {
+                            $product_name = $prod['product_name'];
+                        }
 
-                    while ($cust = mysqli_fetch_array($run_cust_query)) {
-                        $customer_name = $cust['customer_name'];
+                        //for customer name
+                        $customer_query_1 = "select * from customer where id = $customer_id";
+                        $run_cust_query = mysqli_query($con, $customer_query_1);
+
+                        while ($cust = mysqli_fetch_array($run_cust_query)) {
+                            $customer_name = $cust['customer_name'];
+                        }
+
+
+                        $query_temp = "select order_id from orders where ";
+                        if($order_id == 7 || $order_id != $temp){
+                            echo "
+                                    <tr>
+                                        <th scope='row'>$order_id </th>
+                                        <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
+                                        <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
+                                        <td>$product_id</td>
+                                        <td>$product_name</td>
+                                        <td>$quantity</td>
+                                        <td>$amount </td>
+                                        <td>$date</td>
+                                        <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
+                                    </tr>
+                                ";
+                        }else{
+                            echo "<tr>
+                                <th scope='row'>$order_id </th>
+                                <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
+                                <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
+                                <td>$product_id</td>
+                                <td>$product_name</td>
+                                <td>$quantity</td>
+                                <td>$amount </td>
+                                <td>$date</td>
+                                <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
+                            </tr>
+                            ";
+                        }
+                        
+                        $temp = $order_id;
+                        
                     }
-
-                    echo "<tr>
-                            <th scope='row'>$order_id </th>
-                            <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
-                            <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
-                            <td>$product_id</td>
-                            <td>$product_name</td>
-                            <td>$quantity</td>
-                            <td>$amount </td>
-                            <td>$date</td>
-                            <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
-                        </tr>";
+                    echo "</tbody>
+                    </table>";
                 }
+                
             }else{
+            
                 $order_query = "select * from orders";
                 $run_order_query = mysqli_query($con, $order_query);
 
@@ -93,6 +195,7 @@
                     $quantity = $order['quantity'];
                     $amount = $order['total_amount'];
                     $date = $order['date_time'];
+                    
                     //for product name
                     $product_query_1 = "select * from products where product_id = $product_id";
                     $run_prod1_query = mysqli_query($con, $product_query_1);
@@ -108,9 +211,37 @@
                     while ($cust = mysqli_fetch_array($run_cust_query)) {
                         $customer_name = $cust['customer_name'];
                     }
-
-                    echo "
-                        <tr>
+                    if($order_id == 1 || $order_id != $temp){
+                        echo "
+                        <table class='table table-bordered'>
+                            <thead class='thead-dark'>
+                                <tr>
+                                    <th scope='col'>Order Id</th>
+                                    <th scope='col'>Customer Id</th>
+                                    <th scope='col'>Customer Name</th>
+                                    <th scope='col'>Product Id</th>
+                                    <th scope='col'>Product Name</th>
+                                    <th scope='col'>Quantity</th>
+                                    <th scope='col'>Total Price(₹)</th>
+                                    <th scope='col'>Date</th>
+                                    <th scope='col'>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope='row'>$order_id </th>
+                                    <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
+                                    <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
+                                    <td>$product_id</td>
+                                    <td>$product_name</td>
+                                    <td>$quantity</td>
+                                    <td>$amount </td>
+                                    <td>$date</td>
+                                    <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
+                                </tr>
+                            ";
+                    }else{
+                        echo "<tr>
                             <th scope='row'>$order_id </th>
                             <td><a href='customerDetails.php?id=$customer_id'>$customer_id<a></td>
                             <td><a href='customerDetails.php?id=$customer_id'>$customer_name</a></td>
@@ -120,7 +251,11 @@
                             <td>$amount </td>
                             <td>$date</td>
                             <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
-                        </tr>";
+                        </tr>
+                        </tbody>
+                    </table>";
+                    }
+                $temp = $order_id;
                 }
             }
             

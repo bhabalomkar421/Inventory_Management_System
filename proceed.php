@@ -12,6 +12,7 @@ if(isset($_GET['id'])){
     if(mysqli_num_rows($resOrder) == 0){
         $order_number = 1;
     }else if(mysqli_num_rows($resOrder) > 0){
+        
         while($rowOrder = mysqli_fetch_assoc($resOrder)){
             $order_number = $rowOrder['order_id'] + 1;
         }
