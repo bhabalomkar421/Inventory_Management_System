@@ -40,7 +40,7 @@
             </form>     
         </div>
         <div style='margin-left:115px;margin-top:50px'>
-            <a href='./deleteCustomer.php?id=$product_id' ><button class='btn btn-primary btn-lg' >Delete Product </button></a>
+            <a href='./deleteProduct.php?id=$product_id' ><button class='btn btn-primary btn-lg' >Delete Product </button></a>
         </div>
         ";
     }else{

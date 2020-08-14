@@ -212,7 +212,7 @@
                         $customer_name = $cust['customer_name'];
                     }
                     if($order_id == 1 || $order_id != $temp){
-                        echo "
+                        echo "<br>
                         <table class='table table-bordered'>
                             <thead class='thead-dark'>
                                 <tr>
@@ -253,7 +253,7 @@
                             <td> <a href='./editOrders.php?id=$order_id&product_id=$product_id'><img src='./edit.png'></a></td>
                         </tr>
                         </tbody>
-                    </table>";
+                    </table><br>";
                     }
                 $temp = $order_id;
                 }

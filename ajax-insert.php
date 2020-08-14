@@ -10,6 +10,7 @@
         $insert_query = "insert into cart(customer_id,product_id,quantity) values ('{$customer_id}','{$product_id}','{$quantity}')";
 
         if( mysqli_query($con, $insert_query)){
+            
             echo "inserted";
         }else{
             echo "";
