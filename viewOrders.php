@@ -35,28 +35,31 @@
 
                     while ($order = mysqli_fetch_array($run_order_query)) {
                         $order_id = $order['order_id'];
-                        $product_id = $order['product_id'];
-                        $customer_id = $order['customer_id'];
-                        $quantity = $order['quantity'];
-                        $amount = $order['total_amount'];
-                        $date = $order['date_time'];
-                        //for product name
-                        $product_query_1 = "select * from products where product_id = $product_id";
-                        $run_prod1_query = mysqli_query($con, $product_query_1);
+                    $product_id = $order['product_id'];
+                    $customer_id = $order['customer_id'];
+                    $quantity = $order['quantity'];
+                    $product_name = $order['product_name'];
+                    $amount = $order['total_amount'];
+                    $date = $order['date_time'];
+                    
 
-                        while ($prod = mysqli_fetch_array($run_prod1_query)) {
-                            $product_name = $prod['product_name'];
-                        }
+                    //for customer name
+                    $customer_query_1 = "select * from customer where id = $customer_id";
+                    $run_cust_query = mysqli_query($con, $customer_query_1);
 
-                        //for customer name
-                        $customer_query_1 = "select * from customer where id = $customer_id";
-                        $run_cust_query = mysqli_query($con, $customer_query_1);
+                    while ($cust = mysqli_fetch_array($run_cust_query)) {
+                        $customer_name = $cust['customer_name'];
+                    }
+                    $order_id_top = 2;
+    
+                    $customer_top_orderid = "SELECT order_id FROM orders ORDER BY order_id LIMIT 1";
+                    $run_first_order_query = mysqli_query($con, $customer_top_orderid);
 
-                        while ($cust = mysqli_fetch_array($run_cust_query)) {
-                            $customer_name = $cust['customer_name'];
-                        }
+                    while ($ord = mysqli_fetch_array($run_first_order_query)) {
+                        $order_id_top = $ord['order_id'];
+                    }
 
-                        if($order_id == 1 || $order_id != $temp){
+                    if($order_id == $order_id_top || $order_id != $temp ){
                             echo "
                             <table class='table table-bordered'>
                                 <thead class='thead-dark'>
@@ -127,15 +130,9 @@
                         $product_id = $order['product_id'];
                         $customer_id = $order['customer_id'];
                         $quantity = $order['quantity'];
+                        $product_name = $order['product_name'];
                         $amount = $order['total_amount'];
                         $date = $order['date_time'];
-                        //for product name
-                        $product_query_1 = "select * from products where product_id = $product_id";
-                        $run_prod1_query = mysqli_query($con, $product_query_1);
-
-                        while ($prod = mysqli_fetch_array($run_prod1_query)) {
-                            $product_name = $prod['product_name'];
-                        }
 
                         //for customer name
                         $customer_query_1 = "select * from customer where id = $customer_id";
@@ -193,16 +190,10 @@
                     $product_id = $order['product_id'];
                     $customer_id = $order['customer_id'];
                     $quantity = $order['quantity'];
+                    $product_name = $order['product_name'];
                     $amount = $order['total_amount'];
                     $date = $order['date_time'];
                     
-                    //for product name
-                    $product_query_1 = "select * from products where product_id = $product_id";
-                    $run_prod1_query = mysqli_query($con, $product_query_1);
-
-                    while ($prod = mysqli_fetch_array($run_prod1_query)) {
-                        $product_name = $prod['product_name'];
-                    }
 
                     //for customer name
                     $customer_query_1 = "select * from customer where id = $customer_id";
@@ -211,7 +202,17 @@
                     while ($cust = mysqli_fetch_array($run_cust_query)) {
                         $customer_name = $cust['customer_name'];
                     }
-                    if($order_id == 1 || $order_id != $temp){
+                    $order_id_top = 2;
+                    //for top order id
+                    // $customer_top_orderid = "select top 1 * from products.series where state = 'xxx' order by id";
+                    $customer_top_orderid = "SELECT order_id FROM orders ORDER BY order_id LIMIT 1";
+                    $run_first_order_query = mysqli_query($con, $customer_top_orderid);
+
+                    while ($ord = mysqli_fetch_array($run_first_order_query)) {
+                        $order_id_top = $ord['order_id'];
+                    }
+
+                    if($order_id == $order_id_top || $order_id != $temp ){
                         echo "<br>
                         <table class='table table-bordered'>
                             <thead class='thead-dark'>

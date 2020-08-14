@@ -34,12 +34,13 @@ if(isset($_GET['id'])){
             while ($product = mysqli_fetch_array($run_product_query)) {
                 $product_quantity = $product['product_quantity'];
                 $product_price = $product['product_price'];
+                $product_name = $product['product_name'];
             }
             if($quantity > 0 && $product_quantity > 0){
                 
                 $total_amount = $product_price * $quantity;
                 // insert to orders(customer_id, product_id, quantity, total_amount, dateTime)  
-                $queryInsertOrder = "insert into orders(order_id,customer_id, product_id, quantity, total_amount, date_time) values ('$order_number','$customer_id', '$product_id', '$quantity','$total_amount',NOW())";
+                $queryInsertOrder = "insert into orders(order_id,customer_id, product_id, product_name, quantity, total_amount, date_time) values ('$order_number','$customer_id', '$product_id', '$product_name', '$quantity','$total_amount',NOW())";
                 $run_insert_query = mysqli_query($con, $queryInsertOrder);
 
                 //descrease quantity

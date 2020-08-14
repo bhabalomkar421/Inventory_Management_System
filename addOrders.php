@@ -55,7 +55,11 @@ $(document).ready(function(){
                 type : "POST",
                 data : {customer_id:cust_id,product_id:prod_id,quantity:quan},
                 success : function(data){
-                    if(data){
+                    if(data.startsWith("No stocks left for")){
+                        alert(data);
+                    }else if(data.startsWith("Only ")){
+                        alert(data);
+                    }else if(data){
                         console.log(data);
                         loadTable();
                         $("#addForm").trigger("reset");
