@@ -1,4 +1,3 @@
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <?php
     include('nav.php');
