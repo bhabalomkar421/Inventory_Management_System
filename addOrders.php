@@ -14,12 +14,10 @@
     <label for='customer_id'>Customer </label>
     <select id="customer_id" name='customer_id' class="form-control">
     <?php
-        // $i = 0;
         while($customer = mysqli_fetch_array($run_cust_query)) {
             $customer_name = $customer['customer_name'];
             $customer_id = $customer['id'];
             echo "<option id='$customer_id' value='$customer_id'>$customer_name</option>";
-            // $i++;
         }
     ?>
     </select>
